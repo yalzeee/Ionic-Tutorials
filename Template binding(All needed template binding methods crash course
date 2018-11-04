@@ -1,0 +1,46 @@
+Crash Course on all the Binding techniques you could need in ionic
+//How to use the viewChild
+import { Component, ViewChild } from '@angular/core';
+import { Content } from 'ionic-angular';
+
+@Component({...})
+export class MyPage{
+  @ViewChild(Content) content: Content;
+
+  scrollToTop() {
+    this.content.scrollToTop();
+  }
+}
+
+//How to use input
+import { Component, Input, } from '@angular/core';
+
+@Component({
+  selector: 'expandable',
+  templateUrl: 'expandable.html'
+})
+export class ExpandableComponent {
+ 
+  @Input('scrollArea') scrollArea: any;
+  @Input('headerHeight') headerHeight: number;
+ 
+ 
+  constructor() {
+ 
+  }
+ 
+  ngOnInit(){
+      this.AreaOfPage = this.scrollArea
+      //You could use the values you got from the view in various ways.
+}
+//Using viewChild to bind to preset ionic components
+import { ViewChild } from '@angular/core';
+import { Slides } from 'ionic-angular';
+
+class MyPage {
+  @ViewChild(Slides) slides: Slides;
+
+  goToSlide() {
+    this.slides.slideTo(2, 500);
+  }
+}
